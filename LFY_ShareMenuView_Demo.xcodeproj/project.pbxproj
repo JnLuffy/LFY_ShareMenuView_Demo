@@ -247,6 +247,7 @@
 				TargetAttributes = {
 					187375401F0BD9D500CEAEE6 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = F5XBCM7QUZ;
 						ProvisioningStyle = Automatic;
 					};
 					187375591F0BD9D500CEAEE6 = {
@@ -512,6 +513,7 @@
 			baseConfigurationReference = C1470FD07B2080A28EEFA709 /* Pods-LFY_ShareMenuView_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F5XBCM7QUZ;
 				INFOPLIST_FILE = LFY_ShareMenuView_Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cooper.dtag.LFY-ShareMenuView-Demo";
@@ -524,6 +526,7 @@
 			baseConfigurationReference = 4945D8A7B7A692159C26FA85 /* Pods-LFY_ShareMenuView_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F5XBCM7QUZ;
 				INFOPLIST_FILE = LFY_ShareMenuView_Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cooper.dtag.LFY-ShareMenuView-Demo";
@@ -596,6 +599,7 @@
 				187375701F0BD9D500CEAEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		187375711F0BD9D500CEAEE6 /* Build configuration list for PBXNativeTarget "LFY_ShareMenuView_DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -604,6 +608,7 @@
 				187375731F0BD9D500CEAEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		187375741F0BD9D500CEAEE6 /* Build configuration list for PBXNativeTarget "LFY_ShareMenuView_DemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -612,6 +617,7 @@
 				187375761F0BD9D500CEAEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

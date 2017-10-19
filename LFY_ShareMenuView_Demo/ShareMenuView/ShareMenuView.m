@@ -23,18 +23,22 @@
 @interface ShareMenuView()
 
 @property(nonatomic, strong) UIButton *backView;
-
+@property(copy,nonatomic) NSArray *titleArray;
+@property(copy,nonatomic) NSArray *imageArray;
 @end
 
 
 @implementation ShareMenuView
 
--(instancetype)init{
+
+
+-(instancetype)initWithTitleArray:(NSArray *)titleArray imageArray:(NSArray *)imageArray{
     self = [super init];
     if(self){
+        self.titleArray = titleArray;
+        self.imageArray = imageArray;
         [self setup];
     }
-    
     return self;
 }
 
@@ -51,11 +55,9 @@
     [[[UIApplication sharedApplication] keyWindow] addSubview:self];
     
     
-    NSMutableArray *shareTitleArray = [[NSMutableArray alloc]initWithObjects:@"QQ",@"QQ空间",@"微信",@"朋友圈",@"复制链接", nil ];
-    NSMutableArray *shareIconArray = [[NSMutableArray alloc]initWithObjects:@"news_control_center_qq",@"news_control_center_zone",@"news_control_center_wechat",@"news_control_center_wechatQ",@"news_control_center_link",  nil];
+
     
-    
-    for (int i = 0; i < shareIconArray.count; i ++) {
+    for (int i = 0; i <self.imageArray.count; i ++) {
         
         UIButton *itemView = [UIButton buttonWithType:UIButtonTypeCustom];
         itemView.backgroundColor = [UIColor clearColor];
@@ -75,7 +77,7 @@
         title.font = [UIFont systemFontOfSize:13.0f];
         title.backgroundColor = [UIColor clearColor];
         [title sizeToFit];
-        title.text = shareTitleArray[i];
+        title.text = self.titleArray[i];
         [itemView addSubview:title];
         
         [itemView mas_makeConstraints:^(MASConstraintMaker *make) {
