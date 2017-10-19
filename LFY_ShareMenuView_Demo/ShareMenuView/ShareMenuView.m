@@ -20,6 +20,62 @@
 
 #define randomColor random(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
+@interface ImageWithLabel()
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *label;
+@end
+
+@implementation ImageWithLabel
+
+-(instancetype)initImageLabelWithFrame:(CGRect)frame image:(UIImage *)image labelText:(NSString *)labelText{
+    self = [super init];
+    if(self){
+        self.imageView = ({
+            UIImageView *imageView = [UIImageView new];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            [self addSubview:imageView];
+            imageView;
+        });
+        
+        self.label = ({
+            UILabel *label = [UILabel new];
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [UIFont systemFontOfSize:12];
+            label.text = labelText;
+            [self addSubview:label];
+            label;
+        });
+    }
+    return self;
+
+}
+
+
+#pragma mark -- layoutSubviews
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+ 
+    self.imageView.backgroundColor = randomColor;
+    
+
+    [self.label sizeToFit];
+    
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.width.equalTo(@40);
+        make.top.equalTo(self.mas_top).offset(10);
+        make.centerX.equalTo(self.mas_centerX);
+    }];
+    
+    [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.mas_centerX);
+        make.top.equalTo(self.imageView.mas_bottom).offset(5);
+        make.bottom.equalTo(self.mas_bottom);
+    }];
+}
+
+@end
+
 @interface ShareMenuView()
 
 @property(nonatomic, strong) UIButton *backView;
@@ -65,41 +121,20 @@
         [itemView addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:itemView];
         
-        //图标
-        UIImageView *icon = [[UIImageView alloc]init];
-        icon.backgroundColor = [UIColor clearColor];
-//        icon.image = [UIImage imageNamed:shareIconArray[i]];
-        icon.backgroundColor = randomColor;
-        [itemView addSubview:icon];
-        
-        //标题
-        UILabel *title = [[UILabel alloc]init];
-        title.font = [UIFont systemFontOfSize:13.0f];
-        title.backgroundColor = [UIColor clearColor];
-        [title sizeToFit];
-        title.text = self.titleArray[i];
-        [itemView addSubview:title];
-        
         [itemView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@70);
             make.width.equalTo(@(SCREEN_WIDTH*1/4));
             make.left.equalTo(self.mas_left).offset((SCREEN_WIDTH*(i%4)/4));
             make.top.equalTo(self.mas_top).offset(70*(i/4));
-            //            if (i == shareIconArray.count - 1) {
-            //                make.bottom.equalTo(self.mas_bottom).offset(-10);
-            //            }
+
         }];
+
+        //frame没起作用！
+        ImageWithLabel * imageWithLabel  = [[ImageWithLabel alloc]initImageLabelWithFrame:itemView.frame image:self.imageArray[i] labelText:self.titleArray[i]];
+        [itemView addSubview:imageWithLabel];
         
-        [icon mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.width.equalTo(@40);
-            make.top.equalTo(itemView.mas_top).offset(10);
-            make.centerX.equalTo(itemView.mas_centerX);
-        }];
-        
-        [title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(itemView.mas_centerX);
-            make.top.equalTo(icon.mas_bottom).offset(5);
-            make.bottom.equalTo(itemView.mas_bottom);
+        [imageWithLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(itemView);
         }];
         
     }

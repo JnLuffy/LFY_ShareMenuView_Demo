@@ -8,6 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@interface ImageWithLabel : UIView
+
+/**
+ 图片和文字一起的View
+
+ @param frame 指定位置和尺寸
+ @param image 图片
+ @param labelText 图片描述
+ @return ImageWithLabel
+ */
+-(instancetype)initImageLabelWithFrame:(CGRect)frame image:(UIImage *)image labelText:(NSString *)labelText;
+
+@end
+
+
+
 @interface ShareMenuView : UIView
 
 
